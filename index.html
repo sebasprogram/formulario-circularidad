@@ -333,14 +333,103 @@
         </div>
     </form> <!-- Cierre definitivo del formulario -->
     <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
+        <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
     <div id="sec6" class="alert-box section-form">
         <h2>Sección VI: Mensaje de cierre</h2>
         <p style="font-size: 18px; color: #1b4f72;"><strong>¡Gracias por su postulación!</strong></p>
         <p>Gracias por su postulación a <em>Territorios que Transforman: Formación Empresaria para la Circularidad</em>.</p>
         <p>Próximamente nos comunicaremos con ustedes para informarles los resultados del proceso de selección de las empresas postuladas.</p>
     </div>
+
     <!-- --- CONTROLADORES JAVASCRIPT --- -->
     <script>
+        // 1. FUNCIÓN NAVEGACIÓN INTELIGENTE ENTRE SECCIONES
+        function cambiarPaso(pasoActual, pasoSiguiente) {
+            var contenedorActual = document.getElementById(pasoActual);
+            var contenedorSiguiente = document.getElementById(pasoSiguiente);
+            
+            var numActual = parseInt(pasoActual.replace('sec', ''));
+            var numSiguiente = parseInt(pasoSiguiente.replace('sec', ''));
+
+            if (numSiguiente < numActual) {
+                contenedorActual.classList.remove('active');
+                contenedorSiguiente.classList.add('active');
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            var inputs = contenedorActual.querySelectorAll('input, select, textarea');
+            var todoValido = true;
+            
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                if (!input.checkValidity()) {
+                    todoValido = false;
+                    input.style.border = "2px solid red"; 
+                    input.reportValidity(); 
+                } else {
+                    input.style.border = "1px solid #ccc"; 
+                }
+            }
+
+            if (todoValido) {
+                contenedorActual.classList.remove('active');
+                contenedorSiguiente.classList.add('active');
+                window.scrollTo(0, 0);
+            } else {
+                alert("Atención: Hay campos vacíos o con formato incorrecto en esta sección.");
+            }
+        }
+
+        // 2. FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
+        function enviarFormulario(event) {
+            event.preventDefault();
+            
+            var form = document.getElementById('circularityForm');
+            var seccionActual = document.getElementById('sec5');
+            var inputs = seccionActual.querySelectorAll('input');
+            var todoValido = true;
+            
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                if (!input.checkValidity()) {
+                    todoValido = false;
+                    input.style.border = "2px solid red"; 
+                    input.reportValidity(); 
+                } else {
+                    input.style.border = "1px solid #ccc";
+                }
+            }
+
+            if (!todoValido) {
+                alert("Atención: Debe cargar ambos documentos de soporte en formato PDF antes de enviar su postulación.");
+                return;
+            }
+
+            var formData = new FormData(form);
+
+            fetch('https://ngrok-free.dev', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    document.getElementById('sec5').classList.remove('active');
+                    document.getElementById('sec6').classList.add('active');
+                    window.scrollTo(0, 0);
+                } else {
+                    alert('Error en el servidor. Verifique que el servicio de MySQL Workbench esté encendido y que la tabla de base de datos se haya creado.');
+                }
+            })
+            .catch(function(error) {
+                console.error('Error de red:', error);
+                alert('Error de red: No se pudo conectar con el backend de .NET Core. Asegúrese de que la terminal muestre "dotnet run" activo.');
+            });
+        }
+    </script>
+</body>
+</html>
+
         // FUNCIÓN NAVEGACIÓN INTELIGENTE ENTRE SECCIONES
         function cambiarPaso(pasoActual, pasoSiguiente) {
             var contenedorActual = document.getElementById(pasoActual);
