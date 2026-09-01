@@ -365,9 +365,15 @@
             }
         }
         // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
-        function enviarFormulario(event) {
-            event.preventDefault();
-            
+                // BUSCA ESTA SECCIÓN EN TU INPUT Y REEMPLÁZALA:
+        var formData = new FormData(form);
+
+        fetch('https://ngrok-free.dev', {
+            method: 'POST',
+            body: formData
+        })
+        .then(function(response) {
+
             var form = document.getElementById('circularityForm');
             var seccionActual = document.getElementById('sec5');
             var inputs = seccionActual.querySelectorAll('input');
