@@ -381,8 +381,7 @@
                 alert("Atención: Hay campos vacíos o con formato incorrecto en esta sección.");
             }
         }
-        // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
-        function enviarFormulario(event) {
+       unction enviarFormulario(event) {
             event.preventDefault();
             
             var form = document.getElementById('circularityForm');
@@ -390,6 +389,7 @@
             var inputs = seccionActual.querySelectorAll('input');
             var todoValido = true;
             
+            // 1. Validamos que el usuario haya seleccionado los dos archivos PDF
             for (var i = 0; i < inputs.length; i++) {
                 var input = inputs[i];
                 if (!input.checkValidity()) {
@@ -406,9 +406,11 @@
                 return;
             }
 
+            // 2. Empaquetamos los archivos adjuntos y los datos
             var formData = new FormData(form);
 
-            fetch('http://localhost:5043/api/formulario/enviar', {
+            // 3. Realizamos el envío con tu dirección completa y real de ngrok
+            fetch('https://ngrok-free.dev', {
                 method: 'POST',
                 body: formData
             })
