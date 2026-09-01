@@ -366,6 +366,7 @@
         }
         // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
                 // BUSCA ESTA SECCIÓN EN TU INPUT Y REEMPLÁZALA:
+               // REGRESA A ESTE PUNTO EN TU JAVASCRIPT Y DÉJALO ASÍ:
         var formData = new FormData(form);
 
         fetch('https://ngrok-free.dev', {
@@ -373,6 +374,8 @@
             body: formData
         })
         .then(function(response) {
+            if (response.ok) {
+
 
             var form = document.getElementById('circularityForm');
             var seccionActual = document.getElementById('sec5');
