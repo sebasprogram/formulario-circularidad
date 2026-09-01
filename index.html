@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Postulación - Economía Circular</title>
+    
+    <style>
+        /* --- ESTILOS DE CORRECCIÓN DE INTERFAZ GENERAL --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: transparent; /* CORRECCIÓN: Deja el fondo transparente para que se vea el video */
+        }
+
+        /* CONFIGURACIÓN PARA QUE EL VIDEO OCUPE TODA LA PANTALLA DETRÁS */
+        #video-fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1; /* Lo manda al fondo detrás de las tarjetas blancas */
+            pointer-events: none;
+        }
+
+        /* 1. OCULTA TODAS LAS SECCIONES INACTIVAS POR DEFECTO */
+        .section-form, .alert-box {
+            display: none !important;
+        }
+
+        /* 2. DISEÑO UNIFICADO DE TARJETA BLANCA EXCLUSIVO PARA LA SECCIÓN ACTIVA */
+        .section-form.active, .alert-box.active {
+            display: block !important;
+            background-color: #ffffff !important;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            margin: 20px auto;
+            max-width: 800px;
+            box-sizing: border-box;
+            position: relative; /* Lo posiciona por encima del video de fondo */
+            z-index: 1;
+        }
+
+        /* Estructura limpia para campos y botones */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        .btn-nav {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .btn-prev {
+            background-color: #95a5a6;
+            color: white;
+        }
+        .btn-nav:not(.btn-prev) {
+            background-color: #16a085;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+       <!-- REINCORPORACIÓN DE TU VIDEO DE FONDO CON EL NOMBRE CORRECTO -->
+    <video autoplay muted loop id="video-fondo">
+        <source src="fondovideo.mp4" type="video/mp4">
+        Tu navegador no soporta videos de fondo.
+    </video>
+
+
+    <!-- AQUÍ CONTINÚA TU SECCIÓN I (<div id="sec1" class="section-form active">...) -->
+
+
+    <!-- SECCIÓN I: INTRODUCCIÓN -->
+    <div id="sec1" class="section-form active">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <img src="logo-institucional.jpg" alt="Logo Institucional" style="max-width: 280px; height: auto;">
+        </div>
+
+        <h1>Territorios que Transforman: Formación Empresarial para la Circularidad</h1>
+        
+        <p>La Gobernación de Cundinamarca, a través de la Secretaría de Bienestar Verde, con el apoyo de Uniempresarial, invita a participar en este programa de formación diseñado para fortalecer las capacidades de empresas y actores de las cadenas de valor de los sectores de minería, turismo, curtiembre y lácteos.</p>
+        
+        <p>Este proceso formativo brindará conocimientos y herramientas prácticas para implementar estrategias de economía circular, optimizar el uso de recursos, aprovechar y valorizar residuos, e impulsar modelos de negocio sostenibles que contribuyan a mejorar la competitividad y rentabilidad de las organizaciones.</p>
+
+        <h2>¿A quién está dirigido?</h2>
+        <p>El programa está dirigido a 40 empresarios y actores de las cadenas de valor de los sectores priorizados en la Estrategia Departamental de Economía Circular: Minería, Turismo, Curtidor y Lácteo, con un total de 10 cupos por cada nodo sectorial.</p>
+
+        <h2>Modalidad y duración</h2>
+        <p>La formación se desarrollará en modalidad virtual sincrónica a través de Microsoft Teams, entre el 15 de septiembre y el 8 de octubre de 2026.</p>
+        
+        <h3>Durante el programa se abordarán temas relacionados con:</h3>
+        <ul>
+            <li>Fundamentos y principios de economía circular y sostenibilidad.</li>
+            <li>Uso eficiente de recursos (agua, energía y materiales).</li>
+            <li>Producción sostenible y competitividad empresarial.</li>
+            <li>Herramientas para el análisis y mejora de procesos.</li>
+            <li>Modelos de negocio sostenibles e innovación.</li>
+            <li>Estrategias de aprovechamiento, valorización y gestión de residuos.</li>
+            <li>Herramientas de análisis de sostenibilidad e indicadores ambientales.</li>
+            <li>Casos prácticos y experiencias aplicadas por sector.</li>
+        </ul>
+
+        <div class="info-highlight" style="background-color: #e8f8f5; padding: 15px; border-left: 5px solid #16a085; margin: 20px 0;">
+            <h3>Fechas de inscripción</h3>
+            <p>Las inscripciones estarán abiertas exclusivamente los días <strong>1 y 2 de septiembre de 2026</strong>.</p>
+        </div>
+
+        <h2>Criterios de selección</h2>
+        <p>Los participantes serán seleccionados de acuerdo con los siguientes criterios:</p>
+        <ul>
+            <li>Orden de llegada de la inscripción.</li>
+            <li>Distribución equitativa de participantes entre municipios y sectores priorizados.</li>
+            <li>Disponibilidad de cupos: 10 cupos por nodo, para un total de 40 participantes. En caso de no completarse los cupos de un nodo, estos serán asignados de manera equitativa a otros nodos según la demanda de inscritos.</li>
+            <li>Convocatoria cerrada y exclusiva para empresas que han trabajado previamente con la Secretaría de Bienestar Verde de la Gobernación de Cundinamarca.</li>
+        </ul>
+
+        <div style="text-align: right; margin-top: 30px;">
+            <button type="button" class="btn-nav" onclick="cambiarPaso('sec1', 'sec2')">Iniciar Registro de Postulación ➔</button>
+        </div>
+    </div>
+
+    <form id="circularityForm" enctype="multipart/form-data" onsubmit="enviarFormulario(event)"> 
+        
+        <!-- SECCIÓN II: DATOS DEL PARTICIPANTE -->
+        <div id="sec2" class="section-form"> 
+            <h2>Sección II: Datos de la persona que tomará la formación</h2> 
+            
+            <div class="form-group"> 
+                <label>Nombres y Apellidos completos:</label> 
+                <!-- Cancela la tecla si es un número. Cancela el pegado si contiene números. -->
+                <input type="text" name="ParticipanteNombres" 
+                       onkeydown="if(/[0-9]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[0-9]/g, ''), 0);"
+                       required> 
+            </div> 
+            
+            <div class="form-group"> 
+                <label>Número de Documento de Identidad:</label> 
+                <!-- Cancela la tecla si es una letra o símbolo. Cancela el pegado inválido. -->
+                <input type="text" name="ParticipanteDocumento" 
+                       onkeydown="if(/[a-zA-Z]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[^0-9]/g, ''), 0);"
+                       inputmode="numeric" required> 
+            </div> 
+            
+            <div class="form-group"> 
+                <label>Número de Teléfono de Contacto:</label> 
+                <!-- Bloquea teclas de letras y caracteres especiales en el teléfono. -->
+                <input type="text" name="ParticipanteTelefono" 
+                       onkeydown="if(/[a-zA-Z]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[^0-9]/g, ''), 0);"
+                       inputmode="tel" required> 
+            </div> 
+            
+            <div class="form-group"> 
+                <label>Correo Electrónico:</label> 
+                <input type="email" name="ParticipanteCorreo" 
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                       title="Por favor, ingrese una dirección de correo electrónico válida (ejemplo: usuario@empresa.com)." required> 
+            </div> 
+            
+            <div class="form-group"> 
+                <label>Cargo que desempeña en la empresa:</label> 
+                <input type="text" name="ParticipanteCargo" required> 
+            </div> 
+
+            <div class="btn-group">
+                <button type="button" class="btn-nav btn-prev" onclick="cambiarPaso('sec2', 'sec1')">Anterior</button>
+                <button type="button" class="btn-nav" onclick="cambiarPaso('sec2', 'sec3')">Siguiente</button>
+            </div>
+        </div>
+
+               <!-- SECCIÓN III: IDENTIFICACIÓN DE LA EMPRESA (CON BLOQUEO ESTRICTO) -->
+        <div id="sec3" class="section-form">
+            <h2>Sección III: Identificación de la Empresa</h2>
+            
+            <div class="form-group">
+                <label>Nombre o Razón Social de la empresa:</label>
+                <!-- Permite letras, números y caracteres comerciales sin restricciones en tiempo real -->
+                <input type="text" name="EmpresaRazonSocial" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Número de Identificación Tributaria (NIT) con dígito de verificación:</label>
+                <!-- Bloquea la escritura y pegado de cualquier carácter que no sea número -->
+                <input type="text" name="EmpresaNit" maxlength="9"
+                       onkeydown="if(/[a-zA-Z]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[^0-9]/g, ''), 0);"
+                       inputmode="numeric" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Nombre del Representante Legal:</label>
+                <!-- Bloquea la escritura y pegado de números en el nombre -->
+                <input type="text" name="EmpresaRepLegal" 
+                       onkeydown="if(/[0-9]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[0-9]/g, ''), 0);"
+                       required>
+            </div>
+            
+            <div class="form-group">
+                <label>Número de documento del Representante Legal:</label>
+                <!-- Bloquea letras y símbolos especiales -->
+                <input type="text" name="EmpresaRepDocumento" 
+                       onkeydown="if(/[a-zA-Z]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[^0-9]/g, ''), 0);"
+                       inputmode="numeric" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Número de teléfono de contacto:</label>
+                <!-- Bloquea letras y símbolos especiales -->
+                <input type="text" name="EmpresaTelefono" 
+                       onkeydown="if(/[a-zA-Z]/.test(event.key)) event.preventDefault();"
+                       onpaste="setTimeout(() => this.value = this.value.replace(/[^0-9]/g, ''), 0);"
+                       inputmode="tel" required>
+            </div>
+
+            <div class="form-group">
+                <label>Ciudad o Municipio:</label>
+                <input type="text" name="EmpresaMunicipio" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Dirección:</label>
+                <input type="text" name="EmpresaDireccion" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Nodo al que pertenece la empresa:</label>
+                <select name="EmpresaNodo" required>
+                    <option value="" disabled selected>Seleccione un nodo...</option>
+                    <option value="Minero">Minero</option>
+                    <option value="Lácteo">Lácteo</option>
+                    <option value="Turístico">Turístico</option>
+                    <option value="Curtiembre">Curtiembre</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Tamaño de la empresa:</label>
+                <select name="EmpresaTamano" required>
+                    <option value="" disabled selected>Seleccione el tamaño...</option>
+                    <option value="Microempresa">Microempresa</option>
+                    <option value="Pequeña empresa">Pequeña empresa</option>
+                    <option value="Mediana empresa">Mediana empresa</option>
+                    <option value="Gran empresa">Gran empresa</option>
+                </select>
+            </div>
+
+            
+            <div class="form-group">
+                <label>Número de empleados de la empresa:</label>
+                <input type="number" name="EmpresaEmpleados" min="1" required>
+            </div>
+
+            <!-- BOTONES DE NAVEGACIÓN DE LA SECCIÓN III -->
+            <div class="btn-group">
+                <button type="button" class="btn-nav btn-prev" onclick="cambiarPaso('sec3', 'sec2')">Anterior</button>
+                <button type="button" class="btn-nav" onclick="cambiarPaso('sec3', 'sec4')">Siguiente</button>
+            </div>
+        </div> <!-- Cierre definitivo de sec3 -->
+        <!-- SECCIÓN IV: VALIDACIONES LEGALES -->
+        <div id="sec4" class="section-form">
+            <h2>Sección IV: Validaciones</h2>
+            
+            <div class="form-group" style="background-color: #fcf8e3; padding: 15px; border-radius: 6px; border: 1px solid #faebcc; display: flex; align-items: flex-start; gap: 10px;">
+                 <input type="checkbox" id="chkDatos" name="AceptaTratamientoDatos" value="true" required style="margin-top: 4px; transform: scale(1.2);">
+                 <label style="font-weight: normal; line-height: 1.4;" for="chkDatos">Acepto el tratamiento de mis datos personales conforme a la Política de Protección de Datos Personales de Uniempresarial, publicada en <a href="/documentos/politica-datos.pdf" target="_blank" style="color: #16a085; font-weight: bold; text-decoration: underline;">este documento oficial local</a>.</label>
+            </div>
+
+            <div class="form-group" style="background-color: #fcf8e3; padding: 15px; border-radius: 6px; border: 1px solid #faebcc; display: flex; align-items: flex-start; gap: 10px;">
+                <input type="checkbox" id="chkCompromiso" name="AceptaCompromiso" value="true" required style="margin-top: 4px; transform: scale(1.2);">
+                <label style="font-weight: normal; line-height: 1.4;" for="chkCompromiso"><strong>Compromiso:</strong> En mi calidad de participante de esta formación, manifiesto formalmente mi compromiso de asistir puntualmente y de manera personal a todas las sesiones programadas, desarrollar y aprobar las actividades de evaluación, participar activa y responsablemente en el proceso formativo, finalizar satisfactoriamente la formación, replicar los conocimientos adquiridos al interior de mi empresa y aplicar los aprendizajes obtenidos. Acepto que el incumplimiento inhabilitará a la empresa para participar en futuros programas organizados por la Gobernación de Cundinamarca.</label>
+            </div>
+
+            <!-- BOTONES DE NAVEGACIÓN DE LA SECCIÓN IV -->
+            <div class="btn-group">
+                <button type="button" class="btn-nav btn-prev" onclick="cambiarPaso('sec4', 'sec3')">Anterior</button>
+                <button type="button" class="btn-nav" onclick="cambiarPaso('sec4', 'sec5')">Siguiente</button>
+            </div>
+        </div> <!-- Cierre definitivo de sec4 -->
+        <!-- SECCIÓN V: CARGA DE DOCUMENTOS -->
+        <div id="sec5" class="section-form"> 
+            <h2>Sección V: Carga de documentos de soporte</h2>
+            <p style="color:red; font-size:13px; font-weight: bold;">* Todas las preguntas y los documentos son obligatorios y deben cargarse en Formato PDF.</p>
+            
+            <div class="form-group">
+                <label>Certificado de Matrícula Mercantil de la empresa, expedida por la Cámara de Comercio, no mayor a 60 días:</label>
+                <input type="file" name="CertificadoMatrilla" accept=".pdf" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Cédula de ciudadanía de la persona que asistirá a la formación (un participante por empresa):</label>
+                <input type="file" name="CedulaParticipante" accept=".pdf" required>
+            </div>
+            
+            <!-- BOTONES DE NAVEGACIÓN Y ENVÍO FINAL -->
+            <div class="btn-group">
+                <button type="button" class="btn-nav btn-prev" onclick="cambiarPaso('sec5', 'sec4')">Anterior</button>
+                <button type="submit" class="btn-nav">Enviar Formulario Anexo</button>
+            </div>
+        </div>
+    </form> <!-- Cierre definitivo del formulario -->
+    <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
+    <div id="sec6" class="alert-box section-form">
+        <h2>Sección VI: Mensaje de cierre</h2>
+        <p style="font-size: 18px; color: #1b4f72;"><strong>¡Gracias por su postulación!</strong></p>
+        <p>Gracias por su postulación a <em>Territorios que Transforman: Formación Empresaria para la Circularidad</em>.</p>
+        <p>Próximamente nos comunicaremos con ustedes para informarles los resultados del proceso de selección de las empresas postuladas.</p>
+    </div>
+    <!-- --- CONTROLADORES JAVASCRIPT --- -->
+    <script>
+        // FUNCIÓN NAVEGACIÓN INTELIGENTE ENTRE SECCIONES
+        function cambiarPaso(pasoActual, pasoSiguiente) {
+            var contenedorActual = document.getElementById(pasoActual);
+            var contenedorSiguiente = document.getElementById(pasoSiguiente);
+            
+            // Calculamos numéricamente la dirección de la sección (Ej: 'sec3' -> 3)
+            var numActual = parseInt(pasoActual.replace('sec', ''));
+            var numSiguiente = parseInt(pasoSiguiente.replace('sec', ''));
+
+            // Si va hacia atrás, permitimos el retroceso directo sin alertas de validación
+            if (numSiguiente < numActual) {
+                contenedorActual.classList.remove('active');
+                contenedorSiguiente.classList.add('active');
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            // Si va hacia adelante, seleccionamos y validamos campos de la sección activa
+            var inputs = contenedorActual.querySelectorAll('input, select, textarea');
+            var todoValido = true;
+            
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                if (!input.checkValidity()) {
+                    todoValido = false;
+                    input.style.border = "2px solid red"; 
+                    input.reportValidity(); 
+                } else {
+                    input.style.border = "1px solid #ccc"; 
+                }
+            }
+
+            if (todoValido) {
+                contenedorActual.classList.remove('active');
+                contenedorSiguiente.classList.add('active');
+                window.scrollTo(0, 0);
+            } else {
+                alert("Atención: Hay campos vacíos o con formato incorrecto en esta sección.");
+            }
+        }
+        // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
+        function enviarFormulario(event) {
+            event.preventDefault();
+            
+            var form = document.getElementById('circularityForm');
+            var seccionActual = document.getElementById('sec5');
+            var inputs = seccionActual.querySelectorAll('input');
+            var todoValido = true;
+            
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                if (!input.checkValidity()) {
+                    todoValido = false;
+                    input.style.border = "2px solid red"; 
+                    input.reportValidity(); 
+                } else {
+                    input.style.border = "1px solid #ccc";
+                }
+            }
+
+            if (!todoValido) {
+                alert("Atención: Debe cargar ambos documentos de soporte en formato PDF antes de enviar su postulación.");
+                return;
+            }
+
+            var formData = new FormData(form);
+
+            fetch('http://localhost:5043/api/formulario/enviar', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // Oculta el formulario e invoca la tarjeta blanca de cierre con éxito
+                    document.getElementById('sec5').classList.remove('active');
+                    document.getElementById('sec6').classList.add('active');
+                    window.scrollTo(0, 0);
+                } else {
+                    alert('Error en el servidor. Verifique que el servicio de MySQL Workbench esté encendido y que la tabla de base de datos se haya creado.');
+                }
+            })
+            .catch(function(error) {
+                console.error('Error de red:', error);
+                alert('Error de red: No se pudo conectar con el backend de .NET Core. Asegúrese de que la terminal muestre "dotnet run" activo.');
+            });
+        }
+    </script>
