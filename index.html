@@ -364,24 +364,16 @@
                 alert("Atención: Hay campos vacíos o con formato incorrecto en esta sección.");
             }
         }
-        // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE
-                // BUSCA ESTA SECCIÓN EN TU INPUT Y REEMPLÁZALA:
-               // REGRESA A ESTE PUNTO EN TU JAVASCRIPT Y DÉJALO ASÍ:
-        var formData = new FormData(form);
-
-        fetch('https://ngrok-free.dev', {
-            method: 'POST',
-            body: formData
-        })
-        .then(function(response) {
-            if (response.ok) {
-
-
+          // FUNCIÓN ENVÍO AJAX/FETCH POST A .NET CORE (REPARADA)
+        function enviarFormulario(event) {
+            event.preventDefault();
+            
             var form = document.getElementById('circularityForm');
             var seccionActual = document.getElementById('sec5');
             var inputs = seccionActual.querySelectorAll('input');
             var todoValido = true;
             
+            // 1. Validamos que el usuario haya seleccionado los dos archivos PDF
             for (var i = 0; i < inputs.length; i++) {
                 var input = inputs[i];
                 if (!input.checkValidity()) {
@@ -398,19 +390,14 @@
                 return;
             }
 
+            // 2. Empaquetamos los archivos adjuntos y los datos
             var formData = new FormData(form);
 
-                   // CAMBIA ESA LÍNEA PARA QUE QUEDE EXACTAMENTE ASÍ:
-              var formData = new FormData(form);
-
-        // CORRECCIÓN DEFINTIVA: Cambia tu línea corta por esta dirección completa
-        fetch('https://ngrok-free.dev', {
-            method: 'POST',
-            body: formData
-        })
-        .then(function(response) {
-
-
+            // 3. Realizamos el envío con tu dirección completa y real de ngrok
+            fetch('https://ngrok-free.dev', {
+                method: 'POST',
+                body: formData
+            })
             .then(function(response) {
                 if (response.ok) {
                     // Oculta el formulario e invoca la tarjeta blanca de cierre con éxito
