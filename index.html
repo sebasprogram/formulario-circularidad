@@ -334,6 +334,7 @@
     </form> <!-- Cierre definitivo del formulario -->
     <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
         <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
+       <!-- SECCIÓN VI: MENSAJE DE CIERRE (PANTALLA DE ÉXITO) -->
     <div id="sec6" class="alert-box section-form">
         <h2>Sección VI: Mensaje de cierre</h2>
         <p style="font-size: 18px; color: #1b4f72;"><strong>¡Gracias por su postulación!</strong></p>
@@ -429,93 +430,3 @@
     </script>
 </body>
 </html>
-
-        // FUNCIÓN NAVEGACIÓN INTELIGENTE ENTRE SECCIONES
-        function cambiarPaso(pasoActual, pasoSiguiente) {
-            var contenedorActual = document.getElementById(pasoActual);
-            var contenedorSiguiente = document.getElementById(pasoSiguiente);
-            
-            // Calculamos numéricamente la dirección de la sección (Ej: 'sec3' -> 3)
-            var numActual = parseInt(pasoActual.replace('sec', ''));
-            var numSiguiente = parseInt(pasoSiguiente.replace('sec', ''));
-
-            // Si va hacia atrás, permitimos el retroceso directo sin alertas de validación
-            if (numSiguiente < numActual) {
-                contenedorActual.classList.remove('active');
-                contenedorSiguiente.classList.add('active');
-                window.scrollTo(0, 0);
-                return;
-            }
-
-            // Si va hacia adelante, seleccionamos y validamos campos de la sección activa
-            var inputs = contenedorActual.querySelectorAll('input, select, textarea');
-            var todoValido = true;
-            
-            for (var i = 0; i < inputs.length; i++) {
-                var input = inputs[i];
-                if (!input.checkValidity()) {
-                    todoValido = false;
-                    input.style.border = "2px solid red"; 
-                    input.reportValidity(); 
-                } else {
-                    input.style.border = "1px solid #ccc"; 
-                }
-            }
-
-            if (todoValido) {
-                contenedorActual.classList.remove('active');
-                contenedorSiguiente.classList.add('active');
-                window.scrollTo(0, 0);
-            } else {
-                alert("Atención: Hay campos vacíos o con formato incorrecto en esta sección.");
-            }
-        }
-       unction enviarFormulario(event) {
-            event.preventDefault();
-            
-            var form = document.getElementById('circularityForm');
-            var seccionActual = document.getElementById('sec5');
-            var inputs = seccionActual.querySelectorAll('input');
-            var todoValido = true;
-            
-            // 1. Validamos que el usuario haya seleccionado los dos archivos PDF
-            for (var i = 0; i < inputs.length; i++) {
-                var input = inputs[i];
-                if (!input.checkValidity()) {
-                    todoValido = false;
-                    input.style.border = "2px solid red"; 
-                    input.reportValidity(); 
-                } else {
-                    input.style.border = "1px solid #ccc";
-                }
-            }
-
-            if (!todoValido) {
-                alert("Atención: Debe cargar ambos documentos de soporte en formato PDF antes de enviar su postulación.");
-                return;
-            }
-
-            // 2. Empaquetamos los archivos adjuntos y los datos
-            var formData = new FormData(form);
-
-            // 3. Realizamos el envío con tu dirección completa y real de ngrok
-            fetch('https://ngrok-free.dev', {
-                method: 'POST',
-                body: formData
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    // Oculta el formulario e invoca la tarjeta blanca de cierre con éxito
-                    document.getElementById('sec5').classList.remove('active');
-                    document.getElementById('sec6').classList.add('active');
-                    window.scrollTo(0, 0);
-                } else {
-                    alert('Error en el servidor. Verifique que el servicio de MySQL Workbench esté encendido y que la tabla de base de datos se haya creado.');
-                }
-            })
-            .catch(function(error) {
-                console.error('Error de red:', error);
-                alert('Error de red: No se pudo conectar con el backend de .NET Core. Asegúrese de que la terminal muestre "dotnet run" activo.');
-            });
-        }
-    </script>
