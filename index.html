@@ -398,10 +398,15 @@
             var formData = new FormData(form);
 
                    // CAMBIA ESA LÍNEA PARA QUE QUEDE EXACTAMENTE ASÍ:
+              var formData = new FormData(form);
+
+        // CORRECCIÓN DEFINTIVA: Cambia tu línea corta por esta dirección completa
         fetch('https://ngrok-free.dev', {
             method: 'POST',
             body: formData
         })
+        .then(function(response) {
+
 
             .then(function(response) {
                 if (response.ok) {
