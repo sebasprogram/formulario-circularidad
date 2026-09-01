@@ -390,10 +390,12 @@
 
             var formData = new FormData(form);
 
-            fetch('http://localhost:5043/api/formulario/enviar', {
-                method: 'POST',
-                body: formData
-            })
+                   // CAMBIA ESA LÍNEA PARA QUE QUEDE EXACTAMENTE ASÍ:
+        fetch('https://ngrok-free.dev', {
+            method: 'POST',
+            body: formData
+        })
+
             .then(function(response) {
                 if (response.ok) {
                     // Oculta el formulario e invoca la tarjeta blanca de cierre con éxito
